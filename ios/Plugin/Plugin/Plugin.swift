@@ -31,44 +31,47 @@ public class FCM: CAPPlugin, MessagingDelegate {
         Messaging.messaging().apnsToken = deviceToken
     }
     
-    @objc func subscribeTo(_ call: CAPPluginCall) {
-        let topicName = call.getString("topic") ?? ""
-        Messaging.messaging().subscribe(toTopic: topicName) { error in
-            // print("Subscribed to weather topic")
-            if ((error) != nil) {
-                print("ERROR while trying to subscribe topic \(topicName)")
-                call.error("Can't subscribe to topic \(topicName)")
-            }else{
-                call.success([
-                    "message": "subscribed to topic \(topicName)"
-                    ])
-            }
-        }
-    }
+//     @objc func subscribeTo(_ call: CAPPluginCall) {
+//         let topicName = call.getString("topic") ?? ""
+//         Messaging.messaging().subscribe(toTopic: topicName) { error in
+//             // print("Subscribed to weather topic")
+//             if ((error) != nil) {
+//                 print("ERROR while trying to subscribe topic \(topicName)")
+//                 call.error("Can't subscribe to topic \(topicName)")
+//             }else{
+//                 call.success([
+//                     "message": "subscribed to topic \(topicName)"
+//                     ])
+//             }
+//         }
+//     }
     
-    @objc func unsubscribeFrom(_ call: CAPPluginCall) {
-        let topicName = call.getString("topic") ?? ""
-        Messaging.messaging().unsubscribe(fromTopic: topicName) { error in
-            if ((error) != nil) {
-                call.error("Can't unsubscribe from topic \(topicName)")
-            }else{
-                call.success([
-                    "message": "unsubscribed from topic \(topicName)"
-                    ])
-            }
-        }
-    }
+//     @objc func unsubscribeFrom(_ call: CAPPluginCall) {
+//         let topicName = call.getString("topic") ?? ""
+//         Messaging.messaging().unsubscribe(fromTopic: topicName) { error in
+//             if ((error) != nil) {
+//                 call.error("Can't unsubscribe from topic \(topicName)")
+//             }else{
+//                 call.success([
+//                     "message": "unsubscribed from topic \(topicName)"
+//                     ])
+//             }
+//         }
+//     }
     
     @objc func getToken(_ call: CAPPluginCall) {
-        InstanceID.instanceID().instanceID { (result, error) in
-            if let error = error {
-                call.error("Error", error)
-            } else if let result = result {
-                print(result.token)
-                call.success([
-                    "token": result.token
-                ])
-            }
-        }
+         call.success([
+            "token":  Messaging.messaging().fcmToken
+         ])
+//         InstanceID.instanceID().instanceID { (result, error) in
+//             if let error = error {
+//                 call.error("Error", error)
+//             } else if let result = result {
+//                 print(result.token)
+//                 call.success([
+//                     "token": result.token
+//                 ])
+//             }
+//         }
     }
 }
