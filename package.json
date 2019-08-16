@@ -26,7 +26,7 @@
     "dist/",
     "ios/",
     "android/",
-    "CapacitorFcm.podspec"
+    "CapacitorFCMConflictFix.podspec"
   ],
   "keywords": [
     "capacitor",
