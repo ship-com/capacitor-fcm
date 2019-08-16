@@ -1,5 +1,5 @@
 {
-  "name": "capacitor-fcm-conflict-fix",
+  "name": "capacitor-fcm",
   "version": "0.0.8",
   "description": "Brings Firebase Cloud Messaging features to Capacitor",
   "main": "dist/esm/index.js",
@@ -26,7 +26,7 @@
     "dist/",
     "ios/",
     "android/",
-    "CapacitorFCMConflictFix.podspec"
+    "CapacitorFCM.podspec"
   ],
   "keywords": [
     "capacitor",
